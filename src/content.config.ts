@@ -36,8 +36,20 @@ const portfolioCollection = defineCollection({
   }),
 });
 
+const projectsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    tech_stack: z.array(z.string()),
+    github_url: z.string(),
+    speedup_metric: z.string().optional(),
+  }),
+});
+
 export const collections = {
   'experience': experienceCollection,
   'education': educationCollection,
   'portfolio': portfolioCollection,
+  'projects': projectsCollection,
 };
