@@ -24,7 +24,7 @@ const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.or
   <title>Anas Mhana - Senior Software Engineer</title>
 </head>
 <body class="bg-zinc-50 min-h-screen selection:bg-zinc-200 selection:text-zinc-900">
-  <div class="max-w-3xl mx-auto px-6 py-16 antialiased text-zinc-800">
+  <div class="max-w-5xl mx-auto px-6 py-16 antialiased text-zinc-800">
     <div class="space-y-16">
       
       <header class="flex flex-col-reverse sm:flex-row items-center sm:items-start justify-between gap-6">
@@ -64,6 +64,44 @@ const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.or
         <p class="text-zinc-700 leading-relaxed">
           Senior Software Engineer with 8 years of experience at the intersection of high-performance C++ development and Computer Vision. Proven track record in designing and optimizing real-time embedded software for ADAS and communication systems at industry leaders like Bosch, DENSO, and Rohde & Schwarz.
         </p>
+      </section>
+
+      <section id="projects">
+        <h2 class="text-xl font-medium tracking-tight border-l-4 border-indigo-500 pl-3 mb-6 text-zinc-900">Engineering Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {sortedProjects.map(async (entry) => {
+            const { Content } = await render(entry);
+            return (
+              <div class="flex flex-col border border-zinc-200 bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                <div class="flex-1">
+                  <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-2">
+                    <h3 class="font-semibold text-zinc-900 text-xl group-hover:text-indigo-600 transition-colors">
+                      <a href={`/projects/${entry.id}`}>{entry.data.title}</a>
+                    </h3>
+                    {entry.data.speedup_metric && (
+                      <span class="inline-flex text-xs font-medium px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-100 self-start">
+                        {entry.data.speedup_metric} speedup
+                      </span>
+                    )}
+                  </div>
+                  <div class="text-sm text-zinc-700 leading-relaxed [&>p]:mt-2 mb-4">
+                    <Content />
+                  </div>
+                  <div class="mb-4">
+                    {entry.data.tech_stack.map(tech => (
+                      <span class="inline-block bg-indigo-50 text-indigo-700 text-xs px-2.5 py-1 rounded-md mr-2 mb-2 border border-indigo-100 font-medium">{tech}</span>
+                    ))}
+                  </div>
+                  <div class="flex gap-4 text-sm font-medium text-zinc-600">
+                    {entry.data.github_url ? (
+                      <a href={entry.data.github_url} class="hover:text-zinc-900 underline underline-offset-2 decoration-zinc-300">GitHub</a>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <section id="experience">
@@ -112,42 +150,13 @@ const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.or
         </div>
       </section>
 
-      <section id="projects">
-        <h2 class="text-xl font-medium tracking-tight border-l-4 border-indigo-500 pl-3 mb-6 text-zinc-900">Engineering Projects</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {sortedProjects.map(async (entry) => {
-            const { Content } = await render(entry);
-            return (
-              <div class="flex flex-col border border-zinc-200 bg-white p-5 rounded-lg shadow-sm">
-                <div class="flex-1">
-                  <h3 class="font-semibold text-zinc-900 text-lg mb-2">{entry.data.title}</h3>
-                  <div class="text-sm text-zinc-700 leading-relaxed [&>p]:mt-2 mb-4">
-                    <Content />
-                  </div>
-                  <div class="mb-4">
-                    {entry.data.tech_stack.map(tech => (
-                      <span class="inline-block bg-indigo-50 text-indigo-700 text-xs px-2.5 py-1 rounded-md mr-2 mb-2 border border-indigo-100 font-medium">{tech}</span>
-                    ))}
-                  </div>
-                  <div class="flex gap-4 text-sm font-medium text-zinc-600">
-                    {entry.data.github_url ? (
-                      <a href={entry.data.github_url} class="hover:text-zinc-900 underline underline-offset-2 decoration-zinc-300">GitHub</a>
-                    ) : null}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section id="videos" class="mt-16">
+      <section id="videos">
         <h2 class="text-xl font-medium tracking-tight border-l-4 border-indigo-500 pl-3 mb-6 text-zinc-900">Video Demonstrations</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sortedPortfolio.map(async (entry) => {
             const { Content } = await render(entry);
             return (
-              <div class="flex flex-col border border-zinc-200 bg-white p-5 rounded-lg shadow-sm">
+              <div class="flex flex-col border border-zinc-200 bg-white p-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                 <h3 class="font-semibold text-zinc-900 text-lg mb-2">{entry.data.title}</h3>
                 <div class="text-sm text-zinc-700 leading-relaxed mb-4">
                   <Content />
