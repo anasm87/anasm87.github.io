@@ -14,6 +14,13 @@ const sortedProjects = projectEntries;
 
 const portfolioEntries = await getCollection('portfolio');
 const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.order);
+
+const techPalette = [
+  'bg-slate-50 text-slate-600 border-slate-200',
+  'bg-indigo-50 text-indigo-600 border-indigo-200',
+  'bg-blue-50 text-blue-600 border-blue-200',
+  'bg-emerald-50 text-emerald-600 border-emerald-200',
+];
 ---
 
 <!DOCTYPE html>
@@ -133,13 +140,13 @@ const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.or
                       <p>{entry.data.description}</p>
                     </div>
                     <div class="flex flex-wrap gap-2 mb-5">
-                      {entry.data.tech_stack.map(tech => (
-                        <span class="inline-block bg-zinc-50 text-zinc-600 text-[10px] tracking-wide px-2.5 py-1 rounded-full border border-zinc-100 font-medium">{tech}</span>
+                      {entry.data.tech_stack.map((tech, index) => (
+                        <span class={`inline-block ${techPalette[index % techPalette.length]} text-[10px] tracking-wide px-2.5 py-1 rounded-full border font-medium`}>{tech}</span>
                       ))}
                     </div>
-                    <div class="flex gap-4 text-[12px] font-medium text-zinc-500 mt-auto pt-3 border-t border-zinc-50">
+                    <div class="flex gap-4 text-[12px] font-medium mt-auto pt-3 border-t border-zinc-50">
                       {entry.data.github_url ? (
-                        <a href={entry.data.github_url} target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 transition-colors duration-300 flex items-center gap-1">
+                        <a href={entry.data.github_url} target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 transition-colors duration-300 flex items-center gap-1">
                           <span>GitHub</span>
                           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                         </a>
