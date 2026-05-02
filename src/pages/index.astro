@@ -9,6 +9,9 @@ const sortedExperience = experienceEntries.sort((a, b) => a.data.order - b.data.
 const educationEntries = await getCollection('education');
 const sortedEducation = educationEntries.sort((a, b) => a.data.order - b.data.order);
 
+const projectEntries = await getCollection('projects');
+const sortedProjects = projectEntries;
+
 const portfolioEntries = await getCollection('portfolio');
 const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.order);
 ---
@@ -109,10 +112,10 @@ const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.or
         </div>
       </section>
 
-      <section id="portfolio">
-        <h2 class="text-xl font-medium tracking-tight border-l-4 border-indigo-500 pl-3 mb-6 text-zinc-900">Selected Work</h2>
+      <section id="projects">
+        <h2 class="text-xl font-medium tracking-tight border-l-4 border-indigo-500 pl-3 mb-6 text-zinc-900">Engineering Projects</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {sortedPortfolio.map(async (entry) => {
+          {sortedProjects.map(async (entry) => {
             const { Content } = await render(entry);
             return (
               <div class="flex flex-col border border-zinc-200 bg-white p-5 rounded-lg shadow-sm">
@@ -122,24 +125,38 @@ const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.or
                     <Content />
                   </div>
                   <div class="mb-4">
-                    {entry.data.techStack.map(tech => (
+                    {entry.data.tech_stack.map(tech => (
                       <span class="inline-block bg-indigo-50 text-indigo-700 text-xs px-2.5 py-1 rounded-md mr-2 mb-2 border border-indigo-100 font-medium">{tech}</span>
                     ))}
                   </div>
                   <div class="flex gap-4 text-sm font-medium text-zinc-600">
-                    {entry.data.githubLink ? (
-                      <a href={entry.data.githubLink} class="hover:text-zinc-900 underline underline-offset-2 decoration-zinc-300">GitHub</a>
-                    ) : null}
-                    {entry.data.youtubeId ? (
-                      <a href={`https://youtube.com/watch?v=${entry.data.youtubeId}`} class="hover:text-zinc-900 underline underline-offset-2 decoration-zinc-300">Watch on YouTube</a>
+                    {entry.data.github_url ? (
+                      <a href={entry.data.github_url} class="hover:text-zinc-900 underline underline-offset-2 decoration-zinc-300">GitHub</a>
                     ) : null}
                   </div>
                 </div>
-                {entry.data.youtubeId ? (
-                  <div class="pt-4 mt-auto">
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section id="videos" class="mt-16">
+        <h2 class="text-xl font-medium tracking-tight border-l-4 border-indigo-500 pl-3 mb-6 text-zinc-900">Video Demonstrations</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {sortedPortfolio.map(async (entry) => {
+            const { Content } = await render(entry);
+            return (
+              <div class="flex flex-col border border-zinc-200 bg-white p-5 rounded-lg shadow-sm">
+                <h3 class="font-semibold text-zinc-900 text-lg mb-2">{entry.data.title}</h3>
+                <div class="text-sm text-zinc-700 leading-relaxed mb-4">
+                  <Content />
+                </div>
+                {entry.data.youtubeId && (
+                  <div class="mt-auto pt-4">
                     <YouTubeEmbed videoId={entry.data.youtubeId} title={entry.data.title} />
                   </div>
-                ) : null}
+                )}
               </div>
             );
           })}
