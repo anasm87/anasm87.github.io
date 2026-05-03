@@ -1,7 +1,7 @@
 ---
 role: "Real-Time Embedded Software Engineer"
 company: "Bosch GmbH (via ALTEN GmbH)"
-location: "Lindau, Germany"
+location: "Remote (Lindau, Germany)"
 startDate: "2022"
 endDate: "2023"
 order: 2
