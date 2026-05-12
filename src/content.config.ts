@@ -39,6 +39,7 @@ const portfolioCollection = defineCollection({
 const projectsCollection = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
   schema: z.object({
+    order: z.number(),
     title: z.string(),
     description: z.string(),
     tech_stack: z.array(z.string()),
