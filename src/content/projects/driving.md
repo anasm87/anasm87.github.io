@@ -1,4 +1,5 @@
 ---
+order: 5
 title: "Agentic AI Driving Decision Engine"
 description: "An autonomous vehicle decision-making engine powered by LangChain and Google's Gemini LLMs. This engine uses a tool-calling architecture to gather real-time simulated telemetry and perception data, reason about the driving environment, and output rigid, structured control commands."
 tech_stack: ["Python 3.10", "LangChain", "Google Gemini", "Pydantic", "pytest"]

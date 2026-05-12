@@ -1,4 +1,5 @@
 ---
+order: 1
 title: "Visual SLAM Front-End (C++)"
 description: "A robust, mathematically rigorous Visual Odometry (VO) pipeline written in modern C++. This repository represents the perception front-end of a Simultaneous Localization and Mapping (vSLAM) system, engineered to track camera ego-motion across sequential video frames in real-time."
 tech_stack: ["C++17", "OpenCV", "Eigen3", "ORB", "RANSAC", "vcpkg"]

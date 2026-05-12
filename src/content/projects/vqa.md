@@ -1,4 +1,5 @@
 ---
+order: 4
 title: "Agentic VQA System"
 description: "This project implements a Production-Grade Visual Question Answering (VQA) Pipeline. The pipeline is designed to take an image (e.g., a dashcam frame) and a text prompt, process them using an open-source Vision-Language Model (VLM), and return a descriptive answer."
 tech_stack: ["Python", "PyTorch", "Hugging Face Transformers", "BLIP"]

@@ -1,4 +1,5 @@
 ---
+order: 3
 title: "Extended Kalman Filter (EKF) for Sensor Fusion"
 description: "Unlike standard textbook implementations, this EKF is engineered for production-grade numerical stability, specifically designed to prevent covariance divergence in high-dimensional state spaces and floating-point edge cases."
 tech_stack: ["C++17", "Eigen3", "GTest", "CMake"]

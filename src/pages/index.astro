@@ -10,7 +10,7 @@ const educationEntries = await getCollection('education');
 const sortedEducation = educationEntries.sort((a, b) => a.data.order - b.data.order);
 
 const projectEntries = await getCollection('projects');
-const sortedProjects = projectEntries;
+const sortedProjects = projectEntries.sort((a, b) => a.data.order - b.data.order);
 
 const portfolioEntries = await getCollection('portfolio');
 const sortedPortfolio = portfolioEntries.sort((a, b) => a.data.order - b.data.order);

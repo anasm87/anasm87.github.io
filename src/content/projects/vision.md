@@ -1,4 +1,5 @@
 ---
+order: 2
 title: "Multi-Threaded Vision Pipeline"
 description: "This project implements a Thread Pool architecture to perform parallel Sobel edge detection. It is designed to maximize CPU throughput while minimizing lock contention and avoiding false sharing at thread boundaries."
 tech_stack: ["C++17", "Thread Pool", "Sobel", "CMake"]
